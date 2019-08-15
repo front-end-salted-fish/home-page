@@ -1,7 +1,24 @@
 $(document).ready(function () {
     //点击图片跳转到新图√√
     //事件委托给动态添加的图片
-    $("html").on("click", "img", function () {
+    $("#myCarousel").on("click", "img", function () {
+        var $imgName = $(this).attr("name");
+        console.log($imgName);
+        //跳转到空html并添加innerHtml
+        $.ajax({
+            type: 'get',
+            communityId: $imgName,
+            status: '0',
+            //Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJEZXBhcnRtZW50QWRtaW4iXSwiYWRtaW5JZCI6MywiZXhwIjoxNTY1ODczMzE4fQ.hYiptH0rsI7VswsYZLMkNvsf3mGTfu7HYe_fnbOp56c',
+            url: 'http://10.21.23.158:8888/communityPage/getHtmlPage',
+            success: function (data) {
+                //切换到空页面
+                window.location.href = 'detail-page.html';
+                //$("html").html(data.object.html); //更改html
+            }
+        })
+    })
+    $("#paging").on("click", "img", function () {
         var $imgName = $(this).attr("name");
         console.log($imgName);
         //跳转到空html并添加innerHtml
