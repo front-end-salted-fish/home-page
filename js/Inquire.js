@@ -4,7 +4,9 @@ function inquireMythird() {
     var disX = 0; //横向距离
     var disY = 0; //纵向距离
     console.log(Load1);
-
+    $('.move-img').on('mousedown', function (e) {
+        e.preventDefault()
+    });
     Load1.get(0).onmousedown = function (ev) {
         var oEvent = ev || event; //事件对象
         disX = oEvent.pageX - Load1.get(0).offsetLeft; //鼠标位置减去 LoadBox的位置
@@ -35,7 +37,7 @@ function inquireMythird() {
             document.onmouseup = null; // LoadBox太小了，加在document上面大一点
         };
         // return false; //阻止默认事件
-       
+
 
     }
 
@@ -139,7 +141,7 @@ $checkCode.on("blur", () => {
     let $btn = $("#btn");
     let $form = $(".container1 .form");
     $btn.on("click", () => {
-        
+
         let $formSpan = $(".container1 .formSpan");
 
         $form.each((i) => {
@@ -174,65 +176,78 @@ $checkCode.on("blur", () => {
             phone: $phoneval
         };
         console.log(usersData)
+        if ($studentNumberval == '' ||
+            $phoneval == '') {
+            $inquire.eq(1).hide();
+            $innerContainer.eq(0).show();
+            alert("还有没填的项！");
+        } else if ($(".errorSpan1").eq(0).html() == "格式有误！"||
+        $(".errorSpan1").eq(1).html() == "格式有误！") {
+            $inquire.eq(1).hide();
+            $innerContainer.eq(0).show();
+            alert("有格式错误的项！");
+        }
+        else {
+            $.ajax({
+                type: 'POST',
 
-        $.ajax({
-            type: 'POST',
+                data: JSON.stringify(usersData),
 
-            data: JSON.stringify(usersData),
+                contentType: 'application/json',
 
-            contentType: 'application/json',
+                dataType: 'json',
 
-            dataType: 'json',
+                url: 'http://10.21.23.177:8080/home/studentEntry',
 
-            url: 'http://10.21.23.158:8888/home/studentEntry',
+                success: function (data) {
 
-            success: function (data) {
-
-                var datas = data;
-                console.log("成功了");
+                    var datas = data;
+                    console.log(datas);
 
 
-                switch (datas.code) {
-                    case 0:
-                        alert(datas.msg);
-                        console.log(datas.object[0].status);
-                        
-                        if(datas.object[0].status == 0) {
-                            $recruit.text(datas.object[0].communityName+datas.object[0].departmentName);
-                            // $recruit.text(datas.object[0].departmentName);
+                    switch (datas.code) {
+                        case 0:
+                            alert(datas.msg);
+                            console.log(datas.object[0].status);
+
+                            if (datas.object[0].status == 0) {
+                                $recruit.text(datas.object[0].communityName + datas.object[0].departmentName);
+                                // $recruit.text(datas.object[0].departmentName);
                                 $inquire.eq(0).show();
-                        } else if (datas.object[0].status == 1) {
-                            $inquire.eq(1).show();
-                        } else if(datas.object[0].status == 2) {
-                            alert("有为空的地方！");
-                        }
-                           
+                            } else if (datas.object[0].status == 1) {
+                                $inquire.eq(1).show();
+                            } else if (datas.object[0].status == 2) {
+                                alert("有为空的地方！");
+                            }
 
-                        
-                        setTimeout(() => {
-                            // window.location.reload(); //3秒后刷新页面
-                        }, 3000);
-                        break;
-                    case 1:
-                        alert(datas.msg);
-                        break;
-                    default:
-                        alert(datas.msg);
-                        break;
+
+
+                            setTimeout(() => {
+                                // window.location.reload(); //3秒后刷新页面
+                            }, 3000);
+                            break;
+                        case 1:
+                            alert(datas.msg);
+                            break;
+                        default:
+                            alert(datas.msg);
+                            break;
+                    }
+
+
+
+
+                },
+
+                error: function (e) {
+
+                    alert("操作失败请重试");
+
                 }
 
+            });
+        }
 
-
-
-            },
-
-            error: function (e) {
-
-                alert("操作失败请重试");
-
-            }
-
-        });
 
 
     })

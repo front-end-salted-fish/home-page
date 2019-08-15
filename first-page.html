@@ -59,7 +59,7 @@
     <!--查询、注册、登录入口-->
     <div class="container-fluid container1 entryBtn" id="outerBox" style="display: none;">
         <div class="innerContainer">
-            <div class="bgImg2" id="close"><img src="images/lvcha.svg" alt=""></div>
+            <div class="bgImg2" id="close"><img src="images/lvcha.svg" alt="" class="move-img"></div>
             <div class="form-group has-success has-feedback bg">
                 <label class="sr-only" for="inputGroupSuccess1">user</label>
                 <div class="input-group">
@@ -67,7 +67,7 @@
 
                     <input type="text" class="form-control form" id="studentNumber"
                         aria-describedby="inputGroupSuccess1Status" placeholder="学号"><span id="studentNumberSpan"
-                        class="formSpan"></span>
+                        class="formSpan errorSpan1"></span>
                 </div>
 
                 <!-- <span class="glyphicon glyphicon-eye-close form-control-feedback" aria-hidden="true"></span>
@@ -79,7 +79,7 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
 
                     <input type="text" class="form-control form" id="phone" aria-describedby="inputGroupSuccess1Status"
-                        placeholder="手机号"><span id="phoneSpan" class="formSpan"></span>
+                        placeholder="手机号"><span id="phoneSpan" class="formSpan errorSpan1"></span>
 
                 </div>
 
@@ -133,12 +133,12 @@
                 <div class="form-group">
                     <label>社团名字</label>
                     <input type="text" class="form-control form" id="communityName"><span id="communityNameSpan"
-                        class="numberSpan formSpan"></span>
+                        class="numberSpan formSpan errorSpan"></span>
                 </div>
                 <div class="form-group">
                     <label>管理员名字</label>
                     <input type="text" class="form-control form" id="userName"><span id="userNameSpan"
-                        class="numberSpan formSpan"></span>
+                        class="numberSpan formSpan errorSpan"></span>
                 </div>
                 <div class="form-group">
                     <label>级别</label>
@@ -149,18 +149,18 @@
                 </div>
                 <div class="form-group">
                     <label>所属院名称</label>
-                    <input type="text" class="form-control form" id="academicInstitution"><span
-                        id="academicInstitutionSpan" class="numberSpan formSpan"></span>
+                    <input type="text" class="form-control form" id="academicInstitution" disabled><span
+                        id="academicInstitutionSpan" class="numberSpan formSpan errorSpan"></span>
                 </div>
                 <div class="form-group">
                     <label>学号</label>
                     <input type="text" class="form-control form" id="studentNumber1"><span id="studentNumber1Span"
-                        class="numberSpan formSpan"></span>
+                        class="numberSpan formSpan errorSpan"></span>
                 </div>
                 <div class="form-group">
                     <label>手机号</label>
                     <input type="text" class="form-control form" id="Number1"><span id="Number1Span"
-                        class="numberSpan formSpan"></span>
+                        class="numberSpan formSpan errorSpan"></span>
                 </div>
                 <div class="form-group">
                     <label>密码</label>
@@ -168,7 +168,7 @@
                     <span id="indicate">采用数字、字母、特殊字符且长度为8-20位</span>
                     <i class="fa fa-eye" onclick="showhide1()" id="eye"></i>
                     <input type="password" class="form-control form" id="passWord"><span id="passWordSpan"
-                        class="numberSpan formSpan"></span>
+                        class="numberSpan formSpan errorSpan"></span>
                 </div>
 
                 <div class="form-group bg">
@@ -188,16 +188,16 @@
     </div>
     <div class="container-fluid Logincontainer1 entryBtn" id="outerBox2" style="display: none;">
         <div class="innerContainer" id="innerBox">
-            <div class="bgImg"><img src="images/wakai.png" alt="" id="bgImg"></div>
-            <div class="bgImg1"><img src="images/heye.svg" alt=""></div>
-            <div class="bgImg2" id="close2"><img src="images/lvcha.svg" alt=""></div>
+            <div class="bgImg"><img src="images/wakai.png" alt="" id="bgImg" class="moveImg"></div>
+            <div class="bgImg1"><img src="images/heye.svg" alt="" class="moveImg"></div>
+            <div class="bgImg2" id="close2"><img src="images/lvcha.svg" alt="" class="moveImg"></div>
             <div class="form-group has-success has-feedback bg">
                 <label class="sr-only" for="inputGroupSuccess1">user</label>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 
                     <input type="text" class="form-control form" aria-describedby="inputGroupSuccess1Status"
-                        placeholder="账号（手机号或者学号）" id="Number"><span id="NumberSpan" class="numberSpan formSpan"></span>
+                        placeholder="账号（手机号或者学号）" id="Number"><span id="NumberSpan" class="numberSpan formSpan errorSpan2"></span>
                 </div>
 
                 <!-- <span class="glyphicon glyphicon-eye-close form-control-feedback" aria-hidden="true"></span>
@@ -212,7 +212,7 @@
 
                     <input type="password" class="form-control form" id="passWord2"
                         aria-describedby="inputGroupSuccess1Status" placeholder="密码">
-                    <span id="passWord2Span" class="numberSpan formSpan"></span>
+                    <span id="passWord2Span" class="numberSpan formSpan errorSpan2"></span>
 
                 </div>
 

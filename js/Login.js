@@ -4,15 +4,17 @@ function mythird() {
     var disX = 0; //横向距离
     var disY = 0; //纵向距离
     console.log(Load);
-
+    $('.moveImg').on('mousedown', function (e) {
+        e.preventDefault()
+    })
     Load.get(0).onmousedown = function (ev) {
         var oEvent = ev || event; //事件对象
         disX = oEvent.clientX - Load.get(0).offsetLeft; //鼠标位置减去 LoadBox的位置
         disY = oEvent.clientY - Load.get(0).offsetTop;
-       
+
         document.onmousemove = function (ev) {
             console.log(1);
-            
+
             var oEvent = ev || event; //事件对象
             var l = oEvent.clientX - disX;
             var t = oEvent.clientY - disY;
@@ -177,71 +179,79 @@ function showhide() {
             password: $passWord2val
         };
         // let $btn = $("#btn");
+        if ($Numberval == '' || $passWord2val == '') {
+            alert("还有没填的项！");
+        } 
+        // else if ($(".errorSpan2").eq(0).html() == "格式有误！" || $(".errorSpan2").eq(1).html() == "格式有误！") {
+        //     alert("存在格式错误的项！");
+        // }
+         else {
+            $.ajax({
 
-        $.ajax({
+                type: 'POST',
 
-            type: 'POST',
+                contentType: 'application/json',
 
-            contentType: 'application/json',
+                dataType: 'json',
 
-            dataType: 'json',
+                url: 'http://10.21.23.177:8080/login/adminLogin',
 
-            url: 'http://10.21.23.177:8080/login/adminLogin',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization: 'Barber Token'");
+                }, //这里设置header
+                headers: {
+                    'Content-Type': 'application/json;charset=utf8',
+                    'Authorization': 'Barber Token'
+                },
+                data: JSON.stringify(usersData),
+                success: function (data) {
 
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("Authorization: 'Barber Token'");
-            }, //这里设置header
-            headers: {
-                'Content-Type': 'application/json;charset=utf8',
-                'Authorization': 'Barber Token'
-            },
-            data: JSON.stringify(usersData),
-            success: function (data) {
-
-                var datas = data;
-                console.log(datas);
+                    var datas = data;
+                    console.log(datas);
 
 
-                switch (datas.code) {
-                    case 0:
-                        alert(datas.msg);
-                        console.log(datas.object.adminId)
-                        if (datas.object.adminId == 1) {
-                            setTimeout(() => {
-                                // window.location.href = "http://127.0.0.1:5500/Super%20Admin/dist/index.html"; //3秒后跳转页面，需要有管理员id来跳转页面
-                            }, 3000);
-                        } else if (datas.object.adminId == 2) {
-                            setTimeout(() => {
-                                // window.location.href = "file:///D:/recruit-comunity-master/Community%20Admin/html/CommunityAdministrator.html"; //3秒后跳转页面，需要有管理员id来跳转页面
-                            }, 3000);
+                    switch (datas.code) {
+                        case 0:
+                            alert(datas.msg);
+                            console.log(datas.object.adminId)
+                            if (datas.object.adminId == 1) {
+                                setTimeout(() => {
+                                    // window.location.href = "http://127.0.0.1:5500/Super%20Admin/dist/index.html"; //3秒后跳转页面，需要有管理员id来跳转页面
+                                }, 3000);
+                            } else if (datas.object.adminId == 2) {
+                                setTimeout(() => {
+                                    // window.location.href = "file:///D:/recruit-comunity-master/Community%20Admin/html/CommunityAdministrator.html"; //3秒后跳转页面，需要有管理员id来跳转页面
+                                }, 3000);
 
-                        } else {
-                            setTimeout(() => {
-                                // window.location.href = "file:///D:/recruit-comunity-master/Department%20Admin/dist/index.html"; //3秒后跳转页面，需要有管理员id来跳转页面
-                            }, 3000);
-                            
-                        }
+                            } else {
+                                setTimeout(() => {
+                                    // window.location.href = "file:///D:/recruit-comunity-master/Department%20Admin/dist/index.html"; //3秒后跳转页面，需要有管理员id来跳转页面
+                                }, 3000);
 
-                        break;
-                    case 1:
-                        alert(datas.msg);
-                        break;
-                    default:
-                        alert(datas.msg);
-                        break;
+                            }
+
+                            break;
+                        case 1:
+                            alert(datas.msg);
+                            break;
+                        default:
+                            alert(datas.msg);
+                            break;
+                    }
+
+
+
+
+                },
+
+                error: function (e) {
+
+                    alert("操作失败请重试");
+
                 }
 
+            });
+        }
 
-
-
-            },
-
-            error: function (e) {
-
-                alert("操作失败请重试");
-
-            }
-
-        });
     })
 })();

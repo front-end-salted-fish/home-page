@@ -80,6 +80,7 @@ $passWord.on("blur", () => {
     $indicate.hide();
 });
 /*点注册按钮会先检查是否都已填写，之后会出现等待审核的图片（再加一些判断*/
+
 (() => {
     const $innerImg = $("#innerImg");
     const $formBox = $(".formBox");
@@ -97,22 +98,26 @@ $passWord.on("blur", () => {
 
         $form.each((i) => {
             if ($form.eq(i).val() == "") {
+
                 $formSpan.eq(i).text('不能为空！');
                 $formSpan.eq(i).css({
                     "color": "red",
                     "background": "none"
                 });
-
+                if ($("#level option:selected").text() == '校级') {
+                    $formSpan.eq(2).text('');
+                }
                 i++;
-            } else {
-                $innerImg.css({
-                        'display': "block"
-                    }
+            } 
+            // else {
+            //     $innerImg.css({
+            //             'display': "block"
+            //         }
 
-                )
+            //     )
 
-                $formBox.hide();
-            }
+            //     $formBox.hide();
+            // }
         });
         //点击会发出Ajax请求
         let $adminNameval = $("#userName").val();
@@ -120,7 +125,7 @@ $passWord.on("blur", () => {
         let $phoneval = $("#Number1").val();
         let $passwordval = $("#passWord").val();
         let $communityNameval = $("#communityName").val();
-        let $communityLabelIdval = $("#level").get(0).selectedIndex+1; //社团级别
+        let $communityLabelIdval = $("#level").get(0).selectedIndex + 1; //社团级别
         let $academyNameval = $("#academicInstitution").val();
         let $srcval = $("#prevUpload li img").attr("data-image"); //要上传整个图片的文件，不只是url
         let usersData = {
@@ -136,64 +141,86 @@ $passWord.on("blur", () => {
 
         console.log(usersData)
         console.log($adminNameval)
-        if ($adminNameval === ""||
-        $studentNumberval === ""||
-        $phoneval === ""||
-        $passwordval === ""||
-        $communityNameval === ""||
-        $communityLabelIdval === ""||
-        $academyNameval === ""||
-        $srcval === "") {
+        if ($adminNameval === "" ||
+            $studentNumberval === "" ||
+            $phoneval === "" ||
+            $passwordval === "" ||
+            $communityNameval === "" ||
+            $communityLabelIdval === "" ||
+            $srcval === "" ||
+            $(".errorSpan").eq(2).html() == "不能为空！") {
             $innerImg.hide();
             $formBox.show();
             alert("还有信息没有填写哦~")
+        } else if (
+            $(".errorSpan").eq(0).html() == "格式有误！" ||
+            $(".errorSpan").eq(1).html() == "格式有误！" ||
+            $(".errorSpan").eq(2).html() == "格式有误！" ||
+            $(".errorSpan").eq(3).html() == "格式有误！" ||
+            $(".errorSpan").eq(4).html() == "格式有误！" ||
+            $(".errorSpan").eq(5).html() == "格式有误！"
+        ) {
+            $innerImg.hide();
+            $formBox.show();
+            alert("存在格式有误的项哦~");
+        } else if ($('#prevUpload').html() === "") {
+            $innerImg.hide();
+            $formBox.show();
+            alert("还没上传图片");
         } else {
             console.log("进来了")
             $.ajax({
 
                 type: 'POST',
-    
+
                 data: JSON.stringify(usersData),
-    
+
                 contentType: 'application/json',
-    
+
                 dataType: 'json',
-    
-                url: 'http://10.21.23.158:8888/register/registerCommunity',
-    
+
+                url: 'http://10.21.23.177:8080/register/registerCommunity',
+
                 success: function (data) {
-    
+
                     var datas = data;
                     console.log("成功了");
-    
-    
+
+
                     switch (datas.code) {
                         case 0:
                             alert(datas.msg);
+                            $("#innerImg").show();
+                            $(".formBox").hide();
                             setTimeout(() => {
-                                window.location.reload(); //3秒后重新刷新一下页面
+                                // window.location.reload(); //3秒后重新刷新一下页面
                             }, 1000);
                             break;
-    
+                        case 4:
+                            alert(datas.msg);
+                            $("#innerImg").hide();
+                            $(".formBox").show();
+                            break;
+
                         default:
                             alert(datas.msg);
                             break;
                     }
-    
-    
-    
-    
+
+
+
+
                 },
-    
+
                 error: function (e) {
-    
+
                     alert("操作失败请重试");
-    
+
                 }
-    
+
             });
         }
-        
+
     })
 })();
 /*点击关闭按钮会关闭页面 */
@@ -335,49 +362,66 @@ PS: 这里得到的是Data URL数据，IE6、IE7不支持直接预览。可以�
 // }
 $("#fileUpload").on("change", function () {
     let file = this.files[0];
+    //判断file的类型是不是图片类型。
+    if (!/image\/\w+/.test(file.type)) {
+        alert("文件必须为图片！");
+        return false;
+    }
     let reader = new FileReader();
     reader.readAsDataURL(file); //调用自带方法进行转换 
-    
-    reader.onload = function (e) {
-    // this.result 就是base64
-    let finalImage = e.target.result.substring(e.target.result.indexOf(',') + 1);
-    let fileImage = {data:finalImage};
 
-    console.log(fileImage);
-    // $(".global-img").attr("src", this.result);
-    // 存储并获取url生成
-    $.ajax({
-    type: "post",
-    url: 'http://10.21.23.158:8888/apply/uploadImage',
-    // data: fileImage,
-    data:fileImage,
-    
-    
-    dataType: "json",
-    success: function (data) {
-    // 添加到新列表
-    console.log(data);
-    
-    // let datas = data;
-    let str = '';
-    str += "<li><img src="+e.target.result+" data-image="+data.object+"></li>";
-    $("#prevUpload").html(str);
-    // createApplyTr(response.object.src, fileName);
+    reader.onload = function (e) {
+        // this.result 就是base64
+        let finalImage = e.target.result.substring(e.target.result.indexOf(',') + 1);
+        let fileImage = {
+            data: finalImage
+        };
+
+        console.log(fileImage);
+        // $(".global-img").attr("src", this.result);
+        // 存储并获取url生成
+        $.ajax({
+            type: "post",
+            url: 'http://10.21.23.177:8080/apply/uploadImage',
+            // data: fileImage,
+            data: fileImage,
+
+
+            dataType: "json",
+            success: function (data) {
+                // 添加到新列表
+                console.log(data);
+
+                // let datas = data;
+                let str = '';
+                str += "<li><img src=" + e.target.result + " data-image=" + data.object + "></li>";
+                $("#prevUpload").html(str);
+                // createApplyTr(response.object.src, fileName);
+            }
+        });
+
     }
-    });
-    
-    }
-    });
+});
 //选择校级时，所属院名称不可编辑
 let $level = $("#level");
+
 $level.on("blur", () => {
+
     let $levelSelected = $("#level option:selected").text();
     let $academicInstitution = $("#academicInstitution");
-    if ($levelSelected == '校级') {
-        $academicInstitution.attr({
-            disabled: "true"
-        });
-    } else {
-        $academicInstitution.removeAttr("disabled");
+    if ($levelSelected == '院级') {
+        console.log(2)
+        $academicInstitution.removeAttr(
+            'disabled'
+        );
+
+    } else if ($levelSelected == '校级') {
+
+        console.log(4);
+
+        $academicInstitution.attr(
+            'disabled', true
+        );
+        $(".errorSpan").eq(2).html("");
     }
 });
