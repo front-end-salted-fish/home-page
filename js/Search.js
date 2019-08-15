@@ -99,38 +99,38 @@ function getCardsNum(value) {
                 getCards($value, Index);
             })
             $(".modal-body .pagination").on("click", ".control", function () {
-                if ($(".modal-body .pagination .control").index($(this)) == 0 && pageIndex != 0) {
-                    pageIndex--;
-                }
-                if ($(".modal-body .pagination .control").index($(this)) == 1 && pageIndex != $page - 1) {
+                if (!$(this).hasClass("disabled")) {
+                    if ($(".modal-body .pagination .control").index($(this)) == 0 && pageIndex != 0) {
+                        pageIndex--;
+                    }
+                    if ($(".modal-body .pagination .control").index($(this)) == 1 && pageIndex != $page - 1) {
 
-                    pageIndex++;
+                        pageIndex++;
+                    }
+                    $(".modal-body .pagination .active").removeClass("active");
+                    $($(".modal-body .pagination .page")[pageIndex]).addClass("active");
+                    createPaging(pageIndex);
+                    if (pageIndex == 0) {
+                        $($(".modal-body .pagination .control")[0]).addClass("disabled");
+                    } else {
+                        $($(".modal-body .pagination .control")[0]).removeClass("disabled");
+                    }
+                    if (pageIndex == $page - 1) {
+                        $($(".modal-body .pagination .control")[1]).addClass("disabled");
+                    } else {
+                        $($(".modal-body .pagination .control")[1]).removeClass("disabled");
+                    }
+                    let Index;
+                    if (!$(this).hasClass("disabled") && $(".modal-body .pagination .control").index($(this)) == 0) {
+                        Index = parseInt($(".modal-body .pagination .active").text()) - 1;
+                        //console.log(Index)
+                        getCards($value, Index);
+                    } else if (!$(this).hasClass("disabled") && $("#paging .pagination .control").index($(this)) == 1) {
+                        Index = parseInt($(".modal-body .pagination .active").text()) + 1;
+                        //console.log(Index)
+                        getCards($value, Index);
+                    }
                 }
-                $(".modal-body .pagination .active").removeClass("active");
-                $($(".modal-body .pagination .page")[pageIndex]).addClass("active");
-                createPaging(pageIndex);
-                if (pageIndex == 0) {
-                    $($(".modal-body .pagination .control")[0]).addClass("disabled");
-                } else {
-                    $($(".modal-body .pagination .control")[0]).removeClass("disabled");
-                }
-                if (pageIndex == $page - 1) {
-                    $($(".modal-body .pagination .control")[1]).addClass("disabled");
-                } else {
-                    $($(".modal-body .pagination .control")[1]).removeClass("disabled");
-                }
-                let Index;
-                if (!$(this).hasClass("disabled") && $(".modal-body .pagination .control").index($(this)) == 0) {
-                    Index = parseInt($(".modal-body .pagination .active").text()) - 1;
-                    //console.log(Index)
-                    getCards($value, Index);
-                } else if (!$(this).hasClass("disabled") && $("#paging .pagination .control").index($(this)) == 1) {
-                    Index = parseInt($(".modal-body .pagination .active").text()) + 1;
-                    //console.log(Index)
-                    getCards($value, Index);
-                }
-
-
             })
 
             function createPaging(paging) {
@@ -279,14 +279,14 @@ function getCards($value, index) {
             console.log($src.length)
             let $cards = '';
             for (var i = 0; i < $src.length; i++) {
-                $cards += 
-                `<div class="img">
+                $cards +=
+                    `<div class="img">
                     <img src = "${$src[i].src}" name=" ${$src[i].communityId}"> 
                     <span>${$src[i].name}
                     </span>
                 </div>`
             }
-            
+
             $(".modal-body .img").html($cards);
 
         }

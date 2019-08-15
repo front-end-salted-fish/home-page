@@ -14,7 +14,7 @@ $(document).ready(function () {
             success: function (data) {
                 //切换到空页面
                 window.location.href = 'detail-page.html';
-                //$("html").html(data.object.html); //更改html
+                $("body").html(data.object.html); //更改html
             }
         })
     })
