@@ -2,6 +2,24 @@
   margin: 0;
   padding: 0;
 }
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+  color: #fff;
+  background-color: #00ab6d !important;
+}
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: #00ab6d !important;
+  border-color: #00ab6d !important;
+}
 body {
   background-color: #c8dad3;
 }
@@ -11,16 +29,18 @@ body {
     width: 20vw;
 } */
 #top-line {
-  background-color: #93b5b3;
+  background-color: #00ab6d;
   position: fixed;
-  height: 8vh;
+  height: 4vw;
   top: 0;
 }
 #top-line p {
+  color: white;
   position: absolute;
-  top: 10%;
+  left: 20px;
+  line-height: 4vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 30px;
+  font-size: 25px;
 }
 #top-line .btns {
   position: absolute;
@@ -49,14 +69,13 @@ body {
   font-size: 10px;
 }
 #top-line .search .search-result ul {
-  height: 55px;
-  overflow-y: scroll;
   list-style: none;
 }
 #top-line .search .search-result ul li {
   border-bottom: 1px solid gray;
   padding: 2px 0px 0px 5px;
   cursor: pointer;
+  line-height: 10px;
 }
 #top-line .search input {
   width: 15vw;
@@ -65,7 +84,7 @@ body {
   background-color: #c8dad3;
   position: absolute;
   left: 20vw;
-  top: 15vh;
+  top: 7.5vw;
   width: 60vw;
   height: 30vw;
   overflow: hidden;
@@ -76,38 +95,63 @@ body {
 }
 #myCarousel .carousel-indicators li {
   margin: 5px;
+  cursor: pointer;
+}
+#myCarousel .carousel-control {
+  cursor: pointer;
 }
 #classify {
   position: absolute;
   left: 20vw;
-  top: 75vh;
+  top: 40vw;
 }
 #paging {
-  background-color: #c8dad3;
+  /* background-color: #c8dad3; */
   position: absolute;
   width: 60vw;
-  top: 85vh;
+  top: 45vw;
   left: 20vw;
 }
-#paging img {
+#paging .img {
   width: 13vw;
-  padding: 10px;
+  overflow: hidden;
+  display: inline;
+  position: relative;
+  padding-left: 1vw;
+}
+#paging .img img {
+  width: 13vw;
   cursor: pointer;
+}
+#paging .img span {
+  background: #00ab6d;
+  position: absolute;
+  color: white;
+  bottom: -6vw;
+  left: 40%;
 }
 #paging ul {
   position: relative;
   top: -2px;
 }
-#myModal .modal-body ul {
-  height: 20vw;
-  list-style: none;
-  overflow-y: scroll;
+#myModal .modal-body {
+  padding: 0;
 }
-#myModal .modal-body ul li {
-  font-size: 30px;
-  padding: 2px 0 0 5px;
-  border-bottom: 1px solid gray;
-  /* &:hover {
-                    color: aquamarine;
-                } */
+#myModal .modal-body .img {
+  width: 20%;
+  overflow: hidden;
+  display: inline;
+  position: relative;
+  margin-left: 4%;
+}
+#myModal .modal-body .img img {
+  width: 20%;
+  cursor: pointer;
+}
+#myModal .modal-body .img span {
+  background: #00ab6d;
+  position: absolute;
+  color: white;
+  bottom: -6vw;
+  left: 40%;
 }

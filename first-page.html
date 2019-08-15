@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="css/communityRegister.css">
     <link rel="stylesheet" href="css/Login.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="src/webuploader-0.1.5/webuploader.css">
     <script src="src/jquery-1.12.4.min.js"></script><!-- 先引入jq，因为bootsrap的js依赖jq -->
-    <script src="src/webuploader-0.1.5/webuploader.js"></script>
-    <!-- <script src="src/bootstrap-3.3.7-dist copy/js/bootstrap.min.js"></script> -->
+    <script src="src/bootstrap-3.3.7-dist copy/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -255,28 +253,26 @@
     <!-- 分类标签 -->
     <div id="classify">
         <ul class="nav nav-pills">
-            <li class="active"><a href="#">全部</a></li>
-            <li><a href="#">校级</a></li>
-            <li><a href="#">院级</a></li>
-            <li><a href="#">兴趣</a></li>
         </ul>
     </div>
     <!-- 分页展示 -->
     <div id="paging" class="text-center">
-        <img src="images/0012.jpg">
-        <img src="images/0012.jpg">
-        <img src="images/0012.jpg">
-        <img src="images/0012.jpg">
-        <ul class="pagination pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
+            <div class="img">
+                <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+                <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+                <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+                <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+            </div>
+            <ul class="pagination">
+                <!-- <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li> -->
+            </ul>
+        </div>
     <!-- 模态框 -->
     <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -290,15 +286,17 @@
                         搜索结果
                     </h4>
                 </div>
-                <div class="modal-body">
-                    <!-- 为模态窗口的主体设置样式。 -->
-                    <ul>
-                        <li>hahaha</li>
-                        <li>hahaha</li>
-                        <li>hahaha</li>
-                        <li>hahaha</li>
-                    </ul>
-                </div>
+                <div id="modal-body" class="modal-body text-center">
+                        <!-- 让ul居中鸭 -->
+                        <!-- 为模态窗口的主体设置样式。 -->
+                        <!-- <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+                        <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+                        <div class="img"><img src="images/0012.jpg"><span>社团1</span></div>
+                        <div class="img"><img src="images/0012.jpg"><span>社团1</span></div> -->
+                        <div class="img"></div>
+                        <ul class="pagination">
+                        </ul>
+                    </div>
                 <div class="modal-footer">
                     <!-- 为模态窗口的底部设置样式 -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -311,6 +309,9 @@
         </div>
         <!-- /.modal -->
     </div>
+    <script src="js/Carousel.js"></script>
+    <script src="js/Classify.js"></script>
+    <script src="js/Search.js"></script>
     <script src="js/index.js"></script>
     <script src="js/Inquire.js"></script>
     <script src="js/communityRegister.js"></script>

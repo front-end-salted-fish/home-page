@@ -1,0 +1,525 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+body .edit-main-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  align-content: flex-start;
+  justify-content: center;
+  position: relative;
+  background: rgba(170, 170, 170, 0.082);
+}
+body .edit-main-body .template {
+  word-break: break-all;
+  width: 70vw;
+  background: #fff;
+  overflow: hidden;
+  transition: all .3s;
+  z-index: 0;
+  position: absolute;
+}
+body .edit-main-body .template .can-edit {
+  transition: all .3s;
+}
+body .edit-main-body .template p {
+  font-size: 1vw;
+  text-indent: 2vw;
+  line-height: 1.6vw;
+  font-weight: 400;
+}
+body .edit-main-body .template .sign-up-bar {
+  margin: 1vw auto 0vw auto;
+  width: 50vw;
+  flex-wrap: wrap;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+}
+body .edit-main-body .template .sign-up-bar p {
+  margin-bottom: 1vw;
+}
+body .edit-main-body .template .sign-up-bar .btn {
+  position: relative;
+  font-size: 0.9vw;
+  display: block;
+  margin-top: 1vw;
+  width: 7vw;
+  height: 2.6vw;
+  transition: all .2s;
+  background: #ddd;
+  margin-bottom: 2vw;
+  z-index: 2;
+}
+body .edit-main-body .template .sign-up-bar .btn:hover {
+  background: rgba(126, 126, 126, 0.411);
+}
+body .edit-main-body .template .footer {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  transform: translate(-51%, 12%);
+  width: 11vw;
+}
+body .edit-main-body .template-1 {
+  box-shadow: 0px 0px 20px #ddd;
+  margin: 0 auto;
+}
+body .edit-main-body .template-1 .img-container {
+  position: relative;
+  width: 55vw;
+  margin-bottom: 4vw;
+}
+body .edit-main-body .template-1 .img-container .img {
+  width: 100%;
+  transition: all .3s;
+}
+body .edit-main-body .template-1 .img-container .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  cursor: pointer;
+  font-size: 2vw;
+  opacity: 0;
+  transition: all .3s;
+}
+body .edit-main-body .template-1 .img-container .mask i {
+  font-size: 2vw;
+  margin-right: 1vw;
+}
+body .edit-main-body .template-1 .can-edit-img .mask {
+  z-index: 1;
+}
+body .edit-main-body .template-1 .can-edit-img:hover img {
+  filter: brightness(50%);
+}
+body .edit-main-body .template-1 .can-edit-img:hover .mask {
+  opacity: 1 !important;
+}
+body .edit-main-body .template-1 .img-container-1 {
+  margin-top: 3vw;
+  margin-left: 13vw;
+  margin-right: 2vw;
+}
+body .edit-main-body .template-1 .main-txt-container {
+  width: 100%;
+}
+body .edit-main-body .template-1 .main-txt-container header {
+  padding-top: 0.5vw;
+  text-align: center;
+  color: #aaa;
+  font-size: 1vw;
+}
+body .edit-main-body .template-1 .main-txt-container .title {
+  display: block;
+  position: relative;
+  margin-left: 7vw;
+  margin-top: 3vw;
+  font-size: 4vw;
+}
+body .edit-main-body .template-1 .main-txt-container .title .underline {
+  position: absolute;
+  width: 35vw;
+  height: 0.15vw;
+  background: #747474;
+  bottom: -10px;
+  left: 0;
+}
+body .edit-main-body .template-1 .main-txt-container .main-txt {
+  margin-top: 4vw;
+  margin-left: 18vw;
+  width: 60%;
+  font-size: 1.03vw;
+  text-indent: 2vw;
+  line-height: 1.6vw;
+  font-weight: 300;
+}
+body .edit-main-body .template-1 .additional-sections .img-container-2 {
+  margin-left: 2vw;
+}
+body .edit-main-body .template-1 .additional-sections .img-container-2 .add-another {
+  display: none;
+  transition: all .3s;
+  cursor: pointer;
+  position: absolute;
+  right: -5vw;
+  top: -4vw;
+  width: 2vw;
+  height: 2vw;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #00ab6c;
+  line-height: 2vw;
+  border-radius: 50%;
+  color: #00ab6c;
+}
+body .edit-main-body .template-1 .additional-sections .img-container-2 .add-another:hover {
+  color: white;
+  background: #00ab6c;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section span {
+  display: inline-block;
+  font-size: 2.5vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section .additional-section-header {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section .dividing-line {
+  position: absolute;
+  background: #555;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section .bottom-line {
+  position: absolute;
+  width: 2vw;
+  height: 0.12vw;
+  background: #000;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section .additional-section-txt {
+  font-size: 1.03vw;
+  text-indent: 2vw;
+  line-height: 1.6vw;
+  font-weight: 300;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left,
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right {
+  display: flex;
+  width: 90%;
+  margin: 0 auto 3vw auto;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .delete,
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .delete {
+  position: absolute;
+  right: 4vw;
+  opacity: 0;
+  transition: all .3s;
+  z-index: 1;
+  cursor: default;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .delete:hover,
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .delete:hover {
+  color: #d64a4a;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .additional-section-header,
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .additional-section-header {
+  display: inline-flex !important;
+  max-height: 13vw;
+  writing-mode: vertical-lr;
+  letter-spacing: 0.6vw;
+  line-height: 3.2vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .dividing-line,
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .dividing-line {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.12vw;
+  height: 100%;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .additional-section-txt,
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .additional-section-txt {
+  width: 60%;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .additional-section-header {
+  padding-right: 1vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .dividing-line {
+  right: 0;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .bottom-line {
+  bottom: 0;
+  right: -2vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-left .additional-section-txt {
+  padding-left: 5.3vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .additional-section-header {
+  order: 3;
+  padding-left: 1vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .dividing-line {
+  order: 2;
+  left: 0;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .bottom-line {
+  top: 0;
+  left: -2vw;
+}
+body .edit-main-body .template-1 .additional-sections .additional-section-header-right .additional-section-txt {
+  order: 1;
+  padding-right: 5.3vw;
+}
+body .edit-main-body .template-1 .additional-sections .header-top-container {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 2vw;
+}
+body .edit-main-body .template-1 .additional-sections .header-top-container .additional-section-header-top {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 0vw 2vw 2vw 2vw;
+  padding-top: 2vw;
+}
+body .edit-main-body .template-1 .additional-sections .header-top-container .additional-section-header-top .additional-section-header {
+  display: block !important;
+  padding-bottom: 0.4vw;
+}
+body .edit-main-body .template-1 .additional-sections .header-top-container .additional-section-header-top .dividing-line {
+  margin: 0 auto;
+  width: 150%;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0;
+  height: 0.1vw;
+  max-width: 14vw;
+}
+body .edit-main-body .template-1 .additional-sections .header-top-container .additional-section-header-top .additional-section-txt {
+  width: 100%;
+  margin-top: 1vw;
+}
+body .edit-main-body .template-2 {
+  box-shadow: 0px 0px 20px #ddd;
+  margin: 0 auto;
+}
+body .edit-main-body .template-2 .main-txt-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  background: #000;
+  height: 40vw;
+}
+body .edit-main-body .template-2 .main-txt-container header {
+  margin-top: 0.5vw;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.712);
+  z-index: 1;
+  position: absolute;
+  font-size: 1vw;
+}
+body .edit-main-body .template-2 .main-txt-container .title {
+  z-index: 1;
+  position: absolute;
+  top: 35%;
+  color: white;
+  font-size: 5vw;
+}
+body .edit-main-body .template-2 .main-txt-container .main-bg {
+  transition: all .3s;
+  cursor: pointer;
+  z-index: 0;
+  position: absolute;
+  filter: brightness(60%);
+  height: 40vw;
+}
+body .edit-main-body .template-2 .main-txt-container .main-bg:hover {
+  transform: scale(1.1);
+}
+body .edit-main-body .template-2 .main-txt-container .side-span {
+  display: block;
+  position: absolute;
+  font-size: 1vw;
+  width: 1vw;
+  right: 2vw;
+  color: white;
+  bottom: 2vw;
+  font-weight: lighter;
+}
+body .edit-main-body .template-2 .main-txt-container .mask-up-triangle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-right: 70vw solid transparent;
+  border-bottom: 6vw solid #ffffff;
+}
+body .edit-main-body .template-2 .main-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .edit-main-body .template-2 .main-section .fonts-container {
+  height: 19vw;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
+  width: 20vw;
+}
+body .edit-main-body .template-2 .main-section .fonts-container .fonts {
+  height: 19vw;
+  position: absolute;
+}
+body .edit-main-body .template-2 .main-section .fonts-container .fonts .font {
+  display: inline-block;
+  position: absolute;
+  font-size: 4vw;
+  left: 1vw;
+  top: 1vw;
+  color: #333;
+  transition: all .2s;
+}
+body .edit-main-body .template-2 .main-section .fonts-container .fonts .font-1 {
+  font-size: 5vw;
+  left: 5vw;
+  top: -1vw;
+}
+body .edit-main-body .template-2 .main-section .fonts-container .fonts .font-2 {
+  font-size: 5vw;
+  left: 2vw;
+  top: 4.5vw;
+}
+body .edit-main-body .template-2 .main-section .fonts-container .fonts .font-3 {
+  left: 8vw;
+  top: 5vw;
+  font-weight: 300;
+}
+body .edit-main-body .template-2 .main-section .fonts-container .fonts .font-4 {
+  left: 6vw;
+  top: 10vw;
+  font-weight: 300;
+}
+body .edit-main-body .template-2 .main-section .main-txt {
+  width: 50%;
+  font-size: 1vw;
+  text-indent: 2vw;
+  line-height: 1.6vw;
+  font-weight: 400;
+  margin-bottom: 0vw !important;
+}
+body .edit-main-body .template-2 .additional-sections {
+  width: 100%;
+  position: relative;
+}
+body .edit-main-body .template-2 .additional-sections .guide-span {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 4vw;
+  top: 1.2vw;
+  color: #000;
+  vertical-align: middle;
+  z-index: 10;
+  font-size: 1.2vw;
+  font-weight: 200;
+}
+body .edit-main-body .template-2 .additional-sections .guide-span i {
+  position: absolute;
+  font-size: 4vw;
+  left: -5vw;
+  transform: rotate(-13deg);
+}
+body .edit-main-body .template-2 .additional-sections .mask-down-triangle {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-left: 70vw solid transparent;
+  border-top: 6vw solid #ffffff;
+  z-index: 4;
+}
+body .edit-main-body .template-2 .additional-sections .mask-up-triangle {
+  z-index: 4;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-right: 70vw solid transparent;
+  border-bottom: 6vw solid #ffffff;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container {
+  width: 100%;
+  display: flex;
+  height: 35vw;
+  overflow: hidden;
+  position: relative;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map {
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 25%;
+  text-align: center;
+  transition: all 0.7s cubic-bezier(0, 1.18, 0.51, 1.23);
+  height: 32vw;
+  color: white;
+  position: relative;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map header {
+  font-size: 3vw;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map .vertical {
+  transition: all 0.7s cubic-bezier(0, 1.18, 0.51, 1.23);
+  position: relative;
+  z-index: 1;
+  width: 3vw;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map .inner-txt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 14vw;
+  height: 32vw;
+  transition: all 0.7s cubic-bezier(0, 1.18, 0.51, 1.23);
+  transform: scale(0.6);
+  z-index: -1;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map .inner-txt p {
+  position: absolute;
+  padding: 2vw;
+  width: 18vw;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map:hover {
+  width: 50%;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map:hover .inner-txt {
+  z-index: 1;
+  transform: scale(1);
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map:hover .vertical {
+  z-index: -1;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-map .orgin-bg {
+  position: absolute;
+  height: 32vw;
+  filter: brightness(70%);
+  z-index: 0;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-2 {
+  margin-top: 0.8vw;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-3 {
+  margin-top: 1.6vw;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-4 {
+  margin-top: 2.4vw;
+}
+body .edit-main-body .template-2 .additional-sections .organ-map-container .organ-5 {
+  margin-top: 3.2vw;
+}
+body .edit-main-body .template-2 .sign-up-bar {
+  margin-top: 3vw !important;
+}
